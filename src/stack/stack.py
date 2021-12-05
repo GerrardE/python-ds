@@ -5,8 +5,8 @@ class StackClass():
     def push(self, item):
         self.items.append(item)
 
-    def pop(self, item):
-        self.items.pop(item)
+    def pop(self):
+        return self.items.pop()
 
     def is_empty(self):
         return self.items == []
@@ -18,16 +18,18 @@ class StackClass():
         return self.items
 
 
-cars = StackClass()
+# cars = StackClass()
 
-print(cars.is_empty())
+# print(cars.is_empty())
 
-cars.push("Bentley")
-cars.push("Volvo")
-cars.push("Mercedes")
+# cars.push("Bentley")
+# cars.push("Volvo")
+# cars.push("Mercedes")
 
-print(cars.is_empty())
+# print(cars.is_empty())
 
-print(cars.get_stack())
+# print(cars.get_stack())
 
-print(cars.peek())
+# print(cars.peek())
+
+# print(cars.pop())
