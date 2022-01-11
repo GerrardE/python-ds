@@ -114,15 +114,47 @@ class LinkedList:
             self.head = curr_node_2
         else:
             prev_node.next = curr_node_2
-        # curr_node_2.next = curr_node.next
 
         if prev_node_2 is None:
             self.head = curr_node
         else:
             prev_node_2.next = curr_node
-        # curr_node.next = curr_node_2.next
 
-        curr_node.next, curr_node_2.next = curr_node_2.next, curr_node.next
+        curr_node.next = curr_node_2.next
+        curr_node_2.next = curr_node.next
+
+        # curr_node.next, curr_node_2.next = curr_node_2.next, curr_node.next
+
+    def reverse(self):
+        if self.head:
+            prev_node = None
+            curr_node = self.head
+
+            while curr_node:
+                next = curr_node.next
+                curr_node.next = prev_node
+
+                prev_node = curr_node
+                curr_node = next
+
+            self.head = prev_node
+
+        return
+
+    def recursive_reverse(self):
+        def _recursive_reverse(prev_node, curr_node):
+            if(not curr_node):
+                return prev_node
+
+            next = curr_node.next
+            curr_node.next = prev_node
+
+            prev_node = curr_node
+            curr_node = next
+
+            return _recursive_reverse(prev_node, curr_node)
+
+        self.head = _recursive_reverse(prev_node=None, curr_node=self.head)
 
     def print(self):
         curr_node = self.head
@@ -140,5 +172,6 @@ linked_list.insert(linked_list.head.next, "Foxtrot")
 linked_list.delete_by_value("Gamma")
 linked_list.append("Gamma2")
 linked_list.swap_nodes("Beta", "Gamma2")
+linked_list.recursive_reverse()
 
 linked_list.print()
